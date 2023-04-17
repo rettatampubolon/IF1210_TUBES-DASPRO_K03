@@ -8,14 +8,16 @@ def login():
         reader = csv.reader(func)
         for row in reader:
             if row[0] == username and row[1] == password:
-             return True
-             print(f"Selamat datang, {row[2]}! \n Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
+                print(f"Selamat datang, {row[2]}! \n Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
+                return True
             elif username != row [0] and row[1] == password:
-               return False
-               print("Username tidak terdaftar!")
+                print("Username tidak terdaftar!")
+                return False
             elif username == row [0] and row[1] != password:
-               return False
-               print ("Password salah!")
+                print ("Password salah!")
+                return False
+    print("Login gagal! \n Anda telah login dengan username Bandung, silahkan lakukan “logout” sebelum melakukan login kembali.")
+    return False
 
     
 login()
