@@ -36,7 +36,7 @@ def login():
   #f02 -
   
   #f03 - Summon Jin
-  def summonjin():
+ def summonjin():
 #I.S. 
 #F.S.
 
@@ -62,26 +62,14 @@ def login():
                 print("Password panjangnya harus 5-25 karakter!")
                 password = input("Masukkan password jin: ")
             else:
-                if jenis_jin == 1:
-                    while length(password) >= 5 and length(password) <=25:
-                        user = [username, password, "Pengumpul"]
-                        print("Mengumpulkan sesajen...")
-                        print("Menyerahkan sesajen...")
-                        print("Membacakan mantra...")
-                        print()
-                        print(f"Jin, {username} berhasil dipanggil")
-                        break
-                else:
-                    print(f'Username “{username}” sudah diambil!')
-                
-                if jenis_jin == 2:
-                    while length(password) >= 5 and length(password) <=25:
-                        user = [username, password, "Pembangun"]
-                        print("Mengumpulkan sesajen...")
-                        print("Menyerahkan sesajen...")
-                        print("Membacakan mantra...")
-                        print()
-                        print(f"Jin, {username} berhasil dipanggil")
-                        break
+                user = [username, password, "Pengumpul" if jenis_jin == 1 else "Pembangun"]
+                if not (user[0]):
+                    JumlahJin += 1
+                    print("Mengumpulkan sesajen...")
+                    print("Menyerahkan sesajen...")
+                    print("Membacakan mantra...")
+                    print()
+                    print(f"Jin, {username} berhasil dipanggil")
+
                 else:
                     print(f'Username “{username}” sudah diambil!')
