@@ -112,6 +112,7 @@ def hilangkan_jin(user_matrix):
         else:
             indeks += 1
 
+# user = [["Jin1","jin1","Pengumpul"],["Jin2","jin2","Pembangun"]]     -contoh array user_matrix
 #F05
 def ubahjin(user_matrix):
     username = input("Masukkan username jin : ")
@@ -121,8 +122,7 @@ def ubahjin(user_matrix):
             count = count + 1
             temp = user_matrix[i][2]
     if count > 0:
-        print(f'Jin ini bertipe {"Pengumpul" if temp == "Pengumpul" else "Pembangun"}. Yakin ingin mengubah ke tipe {"Pembangun" if temp == "Pengumpul" else "Pengumpul"}.')
-        yn = input()
+        yn = input(f'Jin ini bertipe {"Pengumpul" if temp == "Pengumpul" else "Pembangun"}. Yakin ingin mengubah ke tipe {"Pembangun" if temp == "Pengumpul" else "Pengumpul"} (Y/N)? ')
         if yn == "Y":
             if user_matrix[i][2] == "Pengumpul":
                 user_matrix[i][2] = "Pembangun"
@@ -134,7 +134,7 @@ def ubahjin(user_matrix):
 
 
 #F16
-print(">>> exit")
+# print(">>> exit")
 def PeriksaJawaban(Answer):
     if Answer == 'y' or Answer == 'n':
         return True
