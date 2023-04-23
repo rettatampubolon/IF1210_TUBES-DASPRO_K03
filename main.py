@@ -1,6 +1,7 @@
 #TUGAS BESAR DASAR PEMROGRAMAN K03
 
 import csv
+import time
 
 #Fungsi Length
 def length(string):
@@ -11,6 +12,11 @@ def length(string):
     for i in string:
         count = count + 1
     return count
+
+def random_number():
+    times = int(time.time())
+    rand_num = ((times * 1103515245 + 12345) // 65536) % 6
+    return rand_num
 
 
 #f01 - fungsi log in
@@ -33,7 +39,7 @@ def login():
     print(f"Login gagal! \n Anda telah login dengan {username}, silahkan lakukan “logout” sebelum melakukan login kembali.")
     return False
 
-  #f02 -
+#f02 -
 def logout(login):
     if not login:
         print("Anda belum login.")
@@ -44,8 +50,8 @@ def logout(login):
         login = False
         return True
   
-  #f03 - Summon Jin
- def summonjin():
+#f03 - Summon Jin
+def summonjin():
 #I.S. 
 #F.S.
 
@@ -75,8 +81,11 @@ def logout(login):
                 if not (user[0]):
                     JumlahJin += 1
                     print("Mengumpulkan sesajen...")
+                    time.sleep(2.5)
                     print("Menyerahkan sesajen...")
+                    time.sleep(2.5)
                     print("Membacakan mantra...")
+                    time.sleep(2.5)
                     print()
                     print(f"Jin, {username} berhasil dipanggil")
 
@@ -102,3 +111,39 @@ def hilangkan_jin(user_matrix):
             print("Tidak ada jin dengan username tersebut.")
         else:
             indeks += 1
+
+#F05
+def ubahjin(user_matrix):
+    username = input("Masukkan username jin : ")
+    count = 0
+    for i in range(length(user_matrix)):
+        if user_matrix[i][0] == username:
+            count = count + 1
+            temp = user_matrix[i][2]
+    if count > 0:
+        print(f'Jin ini bertipe {"Pengumpul" if temp == "Pengumpul" else "Pembangun"}. Yakin ingin mengubah ke tipe {"Pembangun" if temp == "Pengumpul" else "Pengumpul"}.')
+        yn = input()
+        if yn == "Y":
+            if user_matrix[i][2] == "Pengumpul":
+                user_matrix[i][2] = "Pembangun"
+            else:
+                user_matrix[i][2] = "Pengumpul"
+            print("\nJin telah berhasil diubah")
+    else:
+        print("Tidak ada jin dengan username tersebut.")
+
+
+#F16
+print(">>> exit")
+def PeriksaJawaban(Answer):
+    if Answer == 'y' or Answer == 'n':
+        return True
+    else:
+        return False
+
+Answer = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah?")
+
+while PeriksaJawaban(Answer) == False:
+    Answer = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah?")
+    if PeriksaJawaban(Answer) == True:
+        break
