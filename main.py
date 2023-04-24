@@ -2,6 +2,7 @@
 
 import csv
 import time
+import random           # masih menggunakan library random (belum buat random generate number sendiri)
 
 #Fungsi Length
 def length(string):
@@ -112,7 +113,7 @@ def hilangkan_jin(user_matrix):
         else:
             indeks += 1
 
-# user = [["Jin1","jin1","Pengumpul"],["Jin2","jin2","Pembangun"]]     -contoh array user_matrix
+user = [["Jin1","jin1","Pengumpul"],["Jin2","jin2","Pembangun"]]     # contoh array user_matrix
 #F05
 def ubahjin(user_matrix):
     username = input("Masukkan username jin : ")
@@ -131,7 +132,45 @@ def ubahjin(user_matrix):
             print("\nJin telah berhasil diubah")
     else:
         print("Tidak ada jin dengan username tersebut.")
+    return user_matrix
 
+id_candi = [0 for i in range(100)]              # array dari id candi 
+count_candi = 100                               # init 100 candi yang harus dibangun
+#F06
+def jin_pembangun(array_bahan,array_candi,counting_candi):
+    spek_pasir = random.randint(1,5)
+    spek_batu = random.randint(1,5)
+    spek_air = random.randint(1,5)
+    print(f"Men-generate bahan bangunan ({spek_pasir} pasir, {spek_batu} batu, dan {spek_air} air.)")
+    if array_bahan[0] >= spek_pasir and array_bahan[1] >= spek_batu and array_bahan[2] >= spek_air:
+        for i in range(100):
+            if array_candi[i] == 0:
+                array_candi[i] = array_candi[i] + i + 1
+                break
+        print("Candi berhasil dibangun")
+        counting_candi = counting_candi - 1
+        print(f"Sisa candi yang harus dibangun: {counting_candi}")
+        array_bahan[0] = array_bahan[0] - spek_pasir
+        array_bahan[1] = array_bahan[1] - spek_batu
+        array_bahan[2] = array_bahan[2] - spek_air
+    else:
+        print("Bahan bangunan tidak mencukupi.")
+        print("Candi tidak bisa dibangun!")
+    print(counting_candi)
+    return array_bahan, id_candi, counting_candi
+
+    
+bahan = [0 for i in range(3)]             # array untuk menampung bahan
+#F07
+def jin_pengumpul(array_bahan):
+    pasir = random.randint(0,5)
+    batu = random.randint(0,5)
+    air = random.randint(0,5)
+    array_bahan[0] = array_bahan[0] + pasir
+    array_bahan[1] = array_bahan[1] + batu
+    array_bahan[2] = array_bahan[2] + air
+    print(f"Jin menemukan {pasir} pasir, {batu} batu, dan {air} air.")
+    return array_bahan
 
 #F16
 # print(">>> exit")
