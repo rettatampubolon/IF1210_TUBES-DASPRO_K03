@@ -113,7 +113,7 @@ def hilangkan_jin(user_matrix):
         else:
             indeks += 1
 
-user = [["Jin1","jin1","Pengumpul"],["Jin2","jin2","Pembangun"]]     # contoh array user_matrix
+user = [["Jin1","jin1","Pengumpul"],["Jin2","jin2","Pembangun"],["Jin3","jin3","Pembangun"],["Jin4","jin4","Pengumpul"]]     # contoh array user_matrix
 #F05
 def ubahjin(user_matrix):
     username = input("Masukkan username jin : ")
@@ -169,8 +169,22 @@ def jin_pengumpul(array_bahan):
     array_bahan[0] = array_bahan[0] + pasir
     array_bahan[1] = array_bahan[1] + batu
     array_bahan[2] = array_bahan[2] + air
-    print(f"Jin menemukan {pasir} pasir, {batu} batu, dan {air} air.")
+    # print(f"Jin menemukan {pasir} pasir, {batu} batu, dan {air} air.")
     return array_bahan
+
+#F08
+def batch_kumpul(user_matrix,array_bahan):
+    count = 0
+    for i in range(length(user_matrix)):
+        if user_matrix[i][2] == "Pengumpul":
+            bahan1 = jin_pengumpul(array_bahan)
+            count = count + 1
+    if count > 0:
+        print(f"Mengerahkan {count} jin untuk mengumpulkan bahan.")
+        print(f"Jin menemukan {bahan1[0]} pasir, {bahan1[1]} batu, dan {bahan1[2]} air.")
+    else:
+        print("Kumpul gagal. Anda tidak punya jin pengumpul. Silahkan summon terlebih dahulu.")
+
 
 #F16
 # print(">>> exit")
