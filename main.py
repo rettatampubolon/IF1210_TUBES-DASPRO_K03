@@ -113,7 +113,7 @@ def hilangkan_jin(user_matrix):
         else:
             indeks += 1
 
-user = [["Jin1","jin1","Pengumpul"],["Jin2","jin2","Pembangun"],["Jin3","jin3","Pembangun"],["Jin4","jin4","Pengumpul"]]     # contoh array user_matrix
+user = [["Jin1","jin1","Pengumpul"],["Jin2","jin2","Pembangun"],["Jin3","jin3","Pembangun"],["Jin4","jin4","Pengumpul"]]     # contoh array user_matrix dengan format [username,password,jenis jin]
 #F05
 def ubahjin(user_matrix):
     username = input("Masukkan username jin : ")
@@ -138,11 +138,14 @@ id_candi = [0 for i in range(100)]              # array dari id candi
 count_candi = 100                               # init 100 candi yang harus dibangun
 #F06
 def jin_pembangun(array_bahan,array_candi,counting_candi):
-    spek_pasir = random.randint(1,5)
-    spek_batu = random.randint(1,5)
-    spek_air = random.randint(1,5)
-    print(f"Men-generate bahan bangunan ({spek_pasir} pasir, {spek_batu} batu, dan {spek_air} air.)")
-    if array_bahan[0] >= spek_pasir and array_bahan[1] >= spek_batu and array_bahan[2] >= spek_air:
+    spek_bahan = [0 for i in range(3)]      # spek bahan buat bahan yg dibutuhkan 
+    for i in range(3):
+        spek_bahan[i] = random.randint(1,5)     
+    # spek_pasir = random.randint(1,5)      # spek_bahan[0]
+    # spek_batu = random.randint(1,5)       # spek_bahan[1]
+    # spek_air = random.randint(1,5)        # spek_bahan[2]
+    print(f"Men-generate bahan bangunan ({spek_bahan[0]} pasir, {spek_bahan[1]} batu, dan {spek_bahan[2]} air.)")
+    if array_bahan[0] >= spek_bahan[0] and array_bahan[1] >= spek_bahan[1] and array_bahan[2] >= spek_bahan[2]:
         for i in range(100):
             if array_candi[i] == 0:
                 array_candi[i] = array_candi[i] + i + 1
@@ -150,27 +153,30 @@ def jin_pembangun(array_bahan,array_candi,counting_candi):
         print("Candi berhasil dibangun")
         counting_candi = counting_candi - 1
         print(f"Sisa candi yang harus dibangun: {counting_candi}")
-        array_bahan[0] = array_bahan[0] - spek_pasir
-        array_bahan[1] = array_bahan[1] - spek_batu
-        array_bahan[2] = array_bahan[2] - spek_air
+        array_bahan[0] = array_bahan[0] - spek_bahan[0]
+        array_bahan[1] = array_bahan[1] - spek_bahan[1]
+        array_bahan[2] = array_bahan[2] - spek_bahan[2]
     else:
         print("Bahan bangunan tidak mencukupi.")
         print("Candi tidak bisa dibangun!")
     print(counting_candi)
-    return array_bahan, id_candi, counting_candi
+    return array_bahan, id_candi, counting_candi, spek_bahan    # array_bahan = bahan yang tersisa
+                                                                # id_candi = id untuk candi
+                                                                # counting_candi = hitung total candi
+                                                                # spek_bahan = bahan yang terpakai
 
     
 bahan = [0 for i in range(3)]             # array untuk menampung bahan
 #F07
 def jin_pengumpul(array_bahan):
-    pasir = random.randint(0,5)
-    batu = random.randint(0,5)
-    air = random.randint(0,5)
+    pasir = random.randint(0,5)     # random number untuk bahan pasir 
+    batu = random.randint(0,5)      # random number untuk bahan batu
+    air = random.randint(0,5)       # random number untuk bahan air
     array_bahan[0] = array_bahan[0] + pasir
     array_bahan[1] = array_bahan[1] + batu
     array_bahan[2] = array_bahan[2] + air
     # print(f"Jin menemukan {pasir} pasir, {batu} batu, dan {air} air.")
-    return array_bahan
+    return array_bahan              # mengembalikan array_bahan dengan penambahan bahan-bahan yang telah dikumpulkan melalui random number
 
 #F08
 def batch_kumpul(user_matrix,array_bahan):
@@ -184,6 +190,27 @@ def batch_kumpul(user_matrix,array_bahan):
         print(f"Jin menemukan {bahan1[0]} pasir, {bahan1[1]} batu, dan {bahan1[2]} air.")
     else:
         print("Kumpul gagal. Anda tidak punya jin pengumpul. Silahkan summon terlebih dahulu.")
+    return bahan1
+
+def batch_bangun(user_matrix,array_bahan,array_spek_bahan):     # array_bahan = bahan yang dimiliki; array_spek_bahan = bahan yang diperlukan (didapat melalui fungsi jin pembangun)
+    count = 0
+    for i in range(length(user_matrix)):
+        if user_matrix[i][2] == "Pembangun":
+            bahan2 = array_spek_bahan[3]
+            count = count + 1
+    if count > 0:
+        print(f"Mengerahkan {count} jin untuk membangun candi dengan total bahan {bahan2[0]} pasir, {bahan2[1]} batu, dan {bahan2[2]} air.")
+        if bahan2[0] <= array_bahan[0] and bahan2[1] <= array_bahan[1] and bahan2[2] <= array_bahan[2]:
+            print(f"Jin berhasil membangun total {count} candi.")
+        else:
+            kurang = [0 for i in range(3)]
+            for i in range(3):
+                kurang[i] = bahan2[i] - array_bahan[i]
+                if kurang[i] < 0:
+                    kurang[i] = 0
+            print(f"Bangun gagal. kurang {kurang[0]} pasir, {kurang[1]} batu, dan {kurang[2]} air.")
+    else:
+        print("Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
 
 
 #F16
