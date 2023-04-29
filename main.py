@@ -212,7 +212,49 @@ def batch_bangun(user_matrix,array_bahan,array_spek_bahan):     # array_bahan = 
     else:
         print("Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
 
+#F13
+import os
+import argparse
+import sys
+import util
 
+argument_parser = argparse.ParserArgument()
+add_argument('nama folder' + args='?')
+args = argument_parser.parse_args()
+directory = args.nama_folder
+
+list_directory = os.listdirectory('.')
+print()
+
+save = False
+for i in range(util.length(list_directory)):
+    if 'save' == list_directory[i]:
+        save = True
+        break
+
+if save:
+    list_save = os.listdirectory('./save')
+    idx = 0
+
+for i in range(util.length(list_directory):
+    if folder_directory == list_directory[i]:
+        print('Loading...')
+        print('Selamat datang di program “Manajerial Candi”')
+        print('Silakan masukkan username Anda')
+        break
+    else if save and idx < util.length(list_save):
+        if folder_directory == {f'save/list_save[idx]'}:
+            print('Loading...')
+            print('Selamat datang di program "Manajerial Candi"')
+            print('Silakan masukkan username Anda')
+            break
+        idx =+ 1
+    else:
+        if folder_directory:
+            print[f'Folder"(folder_directory)" tidak ada')
+            sys.exit()
+
+        
 #F16
 # print(">>> exit")
 def PeriksaJawaban(Answer):
