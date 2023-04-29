@@ -221,7 +221,7 @@ import sys
 import util
 import commands
 
-argument_parser = argparse.ParserArgument()
+parser = argparse.ArgumentParser()
 add_argument('nama folder' + args='?')
 args = argument_parser.parse_args()
 folder_directory = args.nama_folder
