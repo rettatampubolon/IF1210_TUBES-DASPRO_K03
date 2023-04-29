@@ -224,7 +224,7 @@ import commands
 argument_parser = argparse.ParserArgument()
 add_argument('nama folder' + args='?')
 args = argument_parser.parse_args()
-directory = args.nama_folder
+folder_directory = args.nama_folder
 
 list_directory = os.listdirectory('.')
 print()
