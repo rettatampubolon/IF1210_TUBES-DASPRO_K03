@@ -223,7 +223,7 @@ import commands
 
 parser = argparse.ArgumentParser()
 add_argument('nama folder' + args='?')
-args = argument_parser.parse_args()
+args = parser.parse_args()
 folder_directory = args.nama_folder
 
 list_directory = os.listdirectory('.')
