@@ -136,6 +136,7 @@ def ubahjin(user_matrix):
 
 id_candi = [0 for i in range(100)]              # array dari id candi 
 count_candi = 100                               # init 100 candi yang harus dibangun
+
 #F06
 def jin_pembangun(array_bahan,array_candi,counting_candi):
     spek_bahan = [0 for i in range(3)]      # spek bahan buat bahan yg dibutuhkan 
@@ -167,6 +168,7 @@ def jin_pembangun(array_bahan,array_candi,counting_candi):
 
     
 bahan = [0 for i in range(3)]             # array untuk menampung bahan
+
 #F07
 def jin_pengumpul(array_bahan):
     pasir = random.randint(0,5)     # random number untuk bahan pasir 
@@ -212,7 +214,7 @@ def batch_bangun(user_matrix,array_bahan,array_spek_bahan):     # array_bahan = 
     else:
         print("Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
 
-#F13
+#F13 - Load
 import os
 import argparse
 import sys
@@ -254,17 +256,19 @@ for i in range(util.length(list_directory):
             print[f'Folder"(folder_directory)" tidak ada')
             sys.exit()
 
-#F15
-import f01
+#f14 - Save
+                  
+#f15 - Help
+f01 import *
 
-def help(info_user):
+def help(role):
     print('=========== HELP ===========')
-    if info_user[0] == False: #Pemain yang belum login
+    if role == False: #Pemain yang belum login
         print('1. login')
         print('untuk masuk menggunakan akun')
         print('2. exit')
         print('untuk keluar dari program dan kembali ke terminal')
-    elif info_user[3] == 'bandung_bondowoso':
+    elif role == 'bandung_bondowoso':
         print('1. logout')
         print('untuk keluar dari akun yang digunakan sekarang')
         print('2. summonjin')
@@ -283,7 +287,7 @@ def help(info_user):
         print('untuk mengambil laporan candi guna mengetahui progress pembangunan candi')
         print('9. save')
         print('untuk menyimpan data user')
-    elif info_user[3] == 'roro_jongrang':
+    elif role == 'roro_jongrang':
         print('1. logout')
         print('untuk keluar dari akun yang digunakan sekarang')
         print('2. hancurkancandi')
@@ -292,14 +296,14 @@ def help(info_user):
         print('untuk menyelesaikan permainan dengan memalsukan pagi hari')
         print('4. save')
         print('untuk menyimpan data user')
-    elif info_user[3] == 'jin_pengumpul':
+    elif role == 'jin_pengumpul':
         print('1. logout')
         print('untuk keluar dari akun yang digunakan sekarang')
         print('2. kumpul')
         print('untuk mengumpulkan bahan-bahan yang diperlukan untuk membangun candi')
         print('3. save')
         print('untuk menyimpan data user')
-    elif info_user[3] == 'jin_pembangun':
+    elif role == 'jin_pembangun':
         print('1. logout')
         print('untuk keluar dari akun yang digunakan sekarang')
         print('2. bangun')
