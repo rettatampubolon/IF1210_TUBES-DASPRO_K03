@@ -3,6 +3,10 @@
 import csv
 import time
 import random           # masih menggunakan library random (belum buat random generate number sendiri)
+import os
+import argparse
+import sys
+import util
 
 #Fungsi Length
 def length(string):
@@ -29,7 +33,7 @@ def login():
         reader = csv.reader(func, delimiter=";")
         for row in reader:
             if row[0] == username and row[1] == password:
-                print(f"Selamat datang, {row[2]}! \n Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
+                print(f"Selamat datang, {row[2]}! \nMasukkan command “help” untuk daftar command yang dapat kamu panggil.")
                 return True
             elif username != row [0] and row[1] == password:
                 print("Username tidak terdaftar!")
@@ -142,9 +146,6 @@ def jin_pembangun(array_bahan,array_candi,counting_candi):
     spek_bahan = [0 for i in range(3)]      # spek bahan buat bahan yg dibutuhkan 
     for i in range(3):
         spek_bahan[i] = random.randint(1,5)     
-    # spek_pasir = random.randint(1,5)      # spek_bahan[0]
-    # spek_batu = random.randint(1,5)       # spek_bahan[1]
-    # spek_air = random.randint(1,5)        # spek_bahan[2]
     print(f"Men-generate bahan bangunan ({spek_bahan[0]} pasir, {spek_bahan[1]} batu, dan {spek_bahan[2]} air.)")
     if array_bahan[0] >= spek_bahan[0] and array_bahan[1] >= spek_bahan[1] and array_bahan[2] >= spek_bahan[2]:
         for i in range(100):
@@ -167,29 +168,58 @@ def jin_pembangun(array_bahan,array_candi,counting_candi):
                                                                 # spek_bahan = bahan yang terpakai
 
     
-bahan = [0 for i in range(3)]             # array untuk menampung bahan
-
 #F07
-def jin_pengumpul(array_bahan):
-    pasir = random.randint(0,5)     # random number untuk bahan pasir 
-    batu = random.randint(0,5)      # random number untuk bahan batu
-    air = random.randint(0,5)       # random number untuk bahan air
-    array_bahan[0] = array_bahan[0] + pasir
-    array_bahan[1] = array_bahan[1] + batu
-    array_bahan[2] = array_bahan[2] + air
-    # print(f"Jin menemukan {pasir} pasir, {batu} batu, dan {air} air.")
-    return array_bahan              # mengembalikan array_bahan dengan penambahan bahan-bahan yang telah dikumpulkan melalui random number
+def jin_pengumpul():
+    file = open('bahan_bangunan.csv', 'r')
+    file_reader = csv.reader(file, delimiter=';')
+    data_bahan = [row for row in file_reader]
+
+    for i in range(5):
+        pasir = random.randint(0,5)     # random number untuk bahan pasir 
+        batu = random.randint(0,5)      # random number untuk bahan batu
+        air = random.randint(0,5)       # random number untuk bahan air
+        data_bahan[1][2] = int(data_bahan[1][2]) + pasir
+        data_bahan[2][2] = int(data_bahan[2][2]) + batu
+        data_bahan[3][2] = int(data_bahan[3][2]) + air
+    
+    print(f"Jin menemukan {pasir} pasir, {batu} batu, dan {air} air.")
+    
+    file = open('bahan_bangunan.csv', 'w', newline='')
+    file_writer = csv.writer(file, delimiter=';')
+    file_writer.writerows(data_bahan)
+    file.close()
+
+
+file = open('user.csv', 'r')
+file_reader = csv.reader(file, delimiter=';')
+user = [row for row in file_reader]
+
+file = open('bahan_bangunan.csv', 'r')
+file_reader = csv.reader(file, delimiter=';')
+bahan = [row for row in file_reader]
 
 #F08
-def batch_kumpul(user_matrix,array_bahan):
+def batch_kumpul(user_matrix,bahan_matrix):
     count = 0
     for i in range(length(user_matrix)):
-        if user_matrix[i][2] == "Pengumpul":
-            bahan1 = jin_pengumpul(array_bahan)
+        if user_matrix[i][2] == "jin_pengumpul":
+            pasir = random.randint(0,5)     # random number untuk bahan pasir 
+            batu = random.randint(0,5)      # random number untuk bahan batu
+            air = random.randint(0,5)       # random number untuk bahan air
+            bahan1 = [pasir,batu,air]
             count = count + 1
     if count > 0:
+        bahan_matrix[1][2] = int(bahan_matrix[1][2]) + pasir
+        bahan_matrix[2][2] = int(bahan_matrix[2][2]) + batu
+        bahan_matrix[3][2] = int(bahan_matrix[3][2]) + air
+        
         print(f"Mengerahkan {count} jin untuk mengumpulkan bahan.")
         print(f"Jin menemukan {bahan1[0]} pasir, {bahan1[1]} batu, dan {bahan1[2]} air.")
+
+        file = open('bahan_bangunan.csv', 'w', newline='')
+        file_writer = csv.writer(file, delimiter=';')
+        file_writer.writerows(bahan_matrix)
+        file.close()
     else:
         print("Kumpul gagal. Anda tidak punya jin pengumpul. Silahkan summon terlebih dahulu.")
     return bahan1
@@ -214,18 +244,17 @@ def batch_bangun(user_matrix,array_bahan,array_spek_bahan):     # array_bahan = 
     else:
         print("Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
 
-#F13 - Load
-import os
-import argparse
-import sys
-import util
 
-argument_parser = argparse.ParserArgument()
-add_argument('nama folder' + args='?')
+
+#F13 - Load
+
+argument_parser = argparse.ArgumentParser()
+argument_parser.add_argument("--nama_folder")
 args = argument_parser.parse_args()
 directory = args.nama_folder
 
-list_directory = os.listdirectory('.')
+
+list_directory = os.listdir('.')
 print()
 
 save = False
@@ -238,13 +267,13 @@ if save:
     list_save = os.listdirectory('./save')
     idx = 0
 
-for i in range(util.length(list_directory):
+for i in range(util.length(list_directory)):
     if folder_directory == list_directory[i]:
         print('Loading...')
         print('Selamat datang di program “Manajerial Candi”')
         print('Silakan masukkan username Anda')
         break
-    else if save and idx < util.length(list_save):
+    elif save and idx < util.length(list_save):
         if folder_directory == {f'save/list_save[idx]'}:
             print('Loading...')
             print('Selamat datang di program "Manajerial Candi"')
@@ -253,7 +282,7 @@ for i in range(util.length(list_directory):
         idx =+ 1
     else:
         if folder_directory:
-            print[f'Folder"(folder_directory)" tidak ada')
+            print(f'Folder"(folder_directory)" tidak ada')
             sys.exit()
 
 #f14 - Save
