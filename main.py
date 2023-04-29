@@ -259,16 +259,16 @@ for i in range(util.length(list_directory):
 #f14 - Save
                   
 #f15 - Help
-f01 import *
+f01 import * #dilakukan import f01 untuk cek role login
 
 def help(role):
     print('=========== HELP ===========')
-    if role == False: #Pemain yang belum login
+    if role == False:       #jika user yang belum login
         print('1. login')
         print('untuk masuk menggunakan akun')
         print('2. exit')
         print('untuk keluar dari program dan kembali ke terminal')
-    elif role == 'bandung_bondowoso':
+    elif role == 'bandung_bondowoso':  #jika role yang dipilih saat login adalah sebagai bandung_bondowoso
         print('1. logout')
         print('untuk keluar dari akun yang digunakan sekarang')
         print('2. summonjin')
@@ -287,7 +287,7 @@ def help(role):
         print('untuk mengambil laporan candi guna mengetahui progress pembangunan candi')
         print('9. save')
         print('untuk menyimpan data user')
-    elif role == 'roro_jongrang':
+    elif role == 'roro_jongrang': #jika role yang dipilih saat login adalah sebagai roro_jongrang
         print('1. logout')
         print('untuk keluar dari akun yang digunakan sekarang')
         print('2. hancurkancandi')
@@ -296,14 +296,14 @@ def help(role):
         print('untuk menyelesaikan permainan dengan memalsukan pagi hari')
         print('4. save')
         print('untuk menyimpan data user')
-    elif role == 'jin_pengumpul':
+    elif role == 'jin_pengumpul': #jika role yang dipilih saat login adalah sebagai jin_pengumpul
         print('1. logout')
         print('untuk keluar dari akun yang digunakan sekarang')
         print('2. kumpul')
         print('untuk mengumpulkan bahan-bahan yang diperlukan untuk membangun candi')
         print('3. save')
         print('untuk menyimpan data user')
-    elif role == 'jin_pembangun':
+    elif role == 'jin_pembangun': #jika role yang dipilih saat login adalah sebagai jin_pembangun
         print('1. logout')
         print('untuk keluar dari akun yang digunakan sekarang')
         print('2. bangun')
@@ -314,7 +314,7 @@ def help(role):
 #F16
 # print(">>> exit")
 def PeriksaJawaban(Answer):
-    if Answer == 'y' or Answer == 'n':
+    if Answer == 'y' or Answer == 'n': #jika inputan yang dimasukkan user benar (y/n)
         return True
     else:
         return False
@@ -322,6 +322,6 @@ def PeriksaJawaban(Answer):
 Answer = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah?")
 
 while PeriksaJawaban(Answer) == False:
-    Answer = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah?")
+    Answer = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah?") #menanyakan kembali kepada user karena input yang dimasukkan tidak sesuai
     if PeriksaJawaban(Answer) == True:
         break
