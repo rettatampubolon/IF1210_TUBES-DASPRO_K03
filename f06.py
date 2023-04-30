@@ -1,18 +1,5 @@
-import csv
 import b01
 import util
-
-file = open('file-eksternal/user.csv', 'r')
-file_reader = csv.reader(file, delimiter=';')
-user = [row for row in file_reader]
-
-file = open('file-eksternal/candi.csv', 'r')
-file_reader = csv.reader(file, delimiter=';')
-data_candi = [row for row in file_reader]
-
-file = open('file-eksternal/bahan_bangunan.csv', 'r')
-file_reader = csv.reader(file, delimiter=';')
-bahan = [row for row in file_reader]
 
 def jin_pembangun(user: list[list], bahan: list[list]):
     id_candi = [0 for i in range(100)]
