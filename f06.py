@@ -2,6 +2,7 @@ import b01
 import util
 
 def jin_pembangun(user: list[list], bahan: list[list]):
+    global JumlahJin
     id_candi = [0 for i in range(100)]
     counting_candi = 100
     idx = 0
@@ -26,6 +27,7 @@ def jin_pembangun(user: list[list], bahan: list[list]):
         bahan[1][2] = int(bahan[1][2]) - pasir
         bahan[2][2] = int(bahan[2][2]) - batu
         bahan[3][2] = int(bahan[3][2]) - air
+        array_candi[idx]=[idx, array_jin[JumlahJin], pasir, batu, air]
     else:
         print("Bahan bangunan tidak mencukupi.")
         print("Candi tidak bisa dibangun!")
