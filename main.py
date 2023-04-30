@@ -2,12 +2,15 @@
 
 import csv
 import time
-import random           # masih menggunakan library random (belum buat random generate number sendiri)
 import os
 import argparse
 import sys
 import util
+import spesifikasi
+import file-eksternal
 
+# No longer used
+"""
 #Fungsi Length
 def length(string):
     #Inisiasi jumlah kata/matriks
@@ -406,3 +409,17 @@ while PeriksaJawaban(Answer) == False:
     Answer = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah?") #menanyakan kembali kepada user karena input yang dimasukkan tidak sesuai
     if PeriksaJawaban(Answer) == True:
         break
+"""
+
+# main.py
+array_user = [None for i in range(105)] # Angka 105 dipilih untuk membantu implementasi f09
+array_candi = [None for i in range(101)]
+array_bahan = [None for i in range(4)]
+
+load("file-eksternal/user.csv", array_user)
+load("file-eksternal/candi.csv", array_candi)
+load("file-eksternal/bahan_bangunan.csv", array_bahan)
+
+while True:
+  spec = input(">>> ")
+  spesifikasi.spec
