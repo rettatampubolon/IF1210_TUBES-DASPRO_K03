@@ -1,5 +1,7 @@
 import time
 
+global JumlahJin
+
 #Fungsi Length
 def length(string):
     #Inisiasi jumlah kata/matriks
