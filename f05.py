@@ -1,7 +1,7 @@
 import csv
 import util
 
-file = open('tester/usr.csv', 'r')
+file = open('file-eksternal/user.csv', 'r')
 file_reader = csv.reader(file, delimiter=';')
 user = [row for row in file_reader]
 
@@ -23,12 +23,10 @@ def ubahjin(user_matrix):
             for i in range(util.length(user_matrix)):
                 if user_matrix[i][0] == username:
                     user_matrix[i][2] = temp
-            file = open('tester/usr.csv', 'w', newline='')
+            file = open('file-eksternal/user.csv', 'w', newline='')
             file_writer = csv.writer(file, delimiter=';')
             file_writer.writerows(user_matrix)
     else:
         print("Tidak ada jin dengan username tersebut.")
-    return user_matrix
 
-ubahjin(user_matrix=user)
-# print(user)
+# ubahjin(user_matrix=user)
