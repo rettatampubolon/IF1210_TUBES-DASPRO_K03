@@ -27,7 +27,7 @@ def jin_pembangun(user: list[list], bahan: list[list]):
         bahan[1][2] = int(bahan[1][2]) - pasir
         bahan[2][2] = int(bahan[2][2]) - batu
         bahan[3][2] = int(bahan[3][2]) - air
-        array_candi[idx]=[idx, array_jin[JumlahJin], pasir, batu, air]
+        array_candi[idx]=[idx, array_jin[JumlahJin+2][0], pasir, batu, air]
     else:
         print("Bahan bangunan tidak mencukupi.")
         print("Candi tidak bisa dibangun!")
