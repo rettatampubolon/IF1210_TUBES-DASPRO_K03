@@ -1,8 +1,8 @@
 import os
 import argparse
 import util
-import sys
 import commands
+import sys
 
 parser = argparse.ArgumentParser()
 parser.add_argument('nama_folder', nargs='?')
