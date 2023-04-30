@@ -39,17 +39,6 @@ def jin_pembangun(user: list[list], bahan: list[list]):
         bahan[1][2] = int(bahan[1][2]) - pasir
         bahan[2][2] = int(bahan[2][2]) - batu
         bahan[3][2] = int(bahan[3][2]) - air
-
-        file = open('file-eksternal/bahan_bangunan.csv', 'w', newline='')
-        file_writer = csv.writer(file, delimiter=';')
-        file_writer.writerows(bahan)
-
-        newline = [idx,username,pasir,batu,air]
-        file = open('file-eksternal/candi.csv', 'a', newline='')
-        file_writer = csv.writer(file, delimiter=';')
-        file_writer.writerow(newline)
-        file.close()
-
     else:
         print("Bahan bangunan tidak mencukupi.")
         print("Candi tidak bisa dibangun!")
