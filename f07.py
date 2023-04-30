@@ -2,7 +2,7 @@ import csv
 import random
 
 def jin_pengumpul():
-    file = open('bahan_bangunan.csv', 'r')
+    file = open('file-eksternal/bahan_bangunan.csv', 'r')
     file_reader = csv.reader(file, delimiter=';')
     data_bahan = [row for row in file_reader]
 
@@ -16,10 +16,10 @@ def jin_pengumpul():
     
     print(f"Jin menemukan {pasir} pasir, {batu} batu, dan {air} air.")
     
-    file = open('bahan_bangunan.csv', 'w', newline='')
+    file = open('file-eksternal/bahan_bangunan.csv', 'w', newline='')
     file_writer = csv.writer(file, delimiter=';')
     file_writer.writerows(data_bahan)
     file.close()
 
     return bahan
-# jin_pengumpul()
+jin_pengumpul()
