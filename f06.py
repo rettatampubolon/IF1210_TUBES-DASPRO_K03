@@ -1,5 +1,5 @@
 import csv
-import random
+import b01
 import util
 
 file = open('file-eksternal/user.csv', 'r')
@@ -23,9 +23,9 @@ def jin_pembangun(user: list[list], bahan: list[list]):
         if user[i][2] == "jin_pembangun":
             username = user[i][0]
 
-    pasir = random.randint(1,5)
-    batu = random.randint(1,5)
-    air = random.randint(1,5)
+    pasir =b01.randomize("bangun")
+    batu = b01.randomize("bangun")
+    air = b01.randomize("bangun")
     print(f"Men-generate bahan bangunan ({pasir} pasir, {batu} batu, dan {air} air.)")
     if int(bahan[1][2]) >= pasir and int(bahan[2][2]) >= batu and int(bahan[3][2]) >= air:
         for i in range(100):
