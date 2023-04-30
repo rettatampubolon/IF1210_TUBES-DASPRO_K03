@@ -10,5 +10,3 @@ def jin_pengumpul():
     array_bahan[3][2] = int(array_bahan[3][2]) + air
     
     print(f"Jin menemukan {pasir} pasir, {batu} batu, dan {air} air.")
-    return bahan
-jin_pengumpul()
