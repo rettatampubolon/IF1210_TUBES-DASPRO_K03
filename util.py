@@ -19,3 +19,9 @@ def random_number():
 
 def eop(rek_file):
     return (rek_file[1] == '')
+
+def search_matriks(list, input):
+    for i in range(length(list)):
+        if list[i] == input:
+            return i
+    return -1
