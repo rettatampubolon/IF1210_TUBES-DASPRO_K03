@@ -251,96 +251,78 @@ def batch_bangun(user_matrix,array_bahan,array_spek_bahan):     # array_bahan = 
 
 #F13 - Load
 
-argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--nama_folder")
-args = argument_parser.parse_args()
-directory = args.nama_folder
+import os
+import argparse
+import sys
 
+parser = argparse.ArgumentParser()
+folder_directory = args.nama_folder
+parser.add_argument('nama_folder', nargs='?')
+args = parser.parse_args()
 
 list_directory = os.listdir('.')
 print()
 
+if save:
+    list_save = os.listdir('./save')
+    idx = 0
+
 save = False
-for i in range(util.length(list_directory)):
+for i in range(len(list_directory)): #memeriksa folder save di current path
     if 'save' == list_directory[i]:
         save = True
         break
-
-if save:
-    list_save = os.listdirectory('./save')
-    idx = 0
-
-for i in range(util.length(list_directory)):
+    
+for i in range(len(list_directory)): #memeriksa nama folder yang diinput
     if folder_directory == list_directory[i]:
         print('Loading...')
         print('Selamat datang di program “Manajerial Candi”')
         print('Silakan masukkan username Anda')
         break
-    elif save and idx < util.length(list_save):
-        if folder_directory == {f'save/list_save[idx]'}:
+    elif save and idx < len(list_save):
+        if folder_directory == list_save[idx]:
             print('Loading...')
             print('Selamat datang di program "Manajerial Candi"')
-            print('Silakan masukkan username Anda')
+            print('Untuk melihat daftar command yang dapat dipanggil, silakan ketik "help" ')
             break
-        idx =+ 1
+        idx += 1
     else:
-        if folder_directory:
-            print(f'Folder"(folder_directory)" tidak ada')
+        if folder_directory: #memeriksa apakah ada masukan argumen dari user
+            print(f'Folder "{folder_directory}" tidak ada')
+            sys.exit()
+        else: #tidak ada masukan argumen dari user
+            print('tidak ada masukan argumen dari user')
+            print('usage: python main.py <nama_folder>')
             sys.exit()
 
 #f14 - Save
 import os
 import util
+import csv
 
-def save(user: list[list], candi: list[list], bahan: list[list])
-    list_directory = os.listdirectory('.')
-    save = False
+def save(user, candi, bahan):
+    if not os.path.exists("save"):
+        os.mkdir("save")
 
-    for i in range(util.length(list_directory)):
-        if list_directory[i] == 'save':
-            save = True
-            break
-    print()
-    nama_folder = input('Masukkan nama folder yang akan dipilih:')
-    print()
-    print('saving...')
+    nama_folder = input("Masukkan nama folder yang akan dipilih: ")
+    print("Saving...")
 
-    if save:
-        list_directory = os.listdirectory('./save') #Jika ada folder save
-        folder_ada = False
+    if not os.path.exists(f"save/{nama_folder}"):
+        os.mkdir(f"save/{nama_folder}")
 
-        for i in range(util.length(list_directory)): #memeriksa ada atau tidaknya nama folder yang sama dengan inputan user
-            if list_directory[i] == nama_folder:
-                folder_ada = True
-                break
+    with open(f"save/{nama_folder}/user.csv", mode="w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerows(user)
 
-        if not folder_ada: #Jika tidak ada folder save
-            os.mkdir(f'save/{nama_folder}')
-            print()
-            print(f'sedang membuat folder save/{nama_folder}...')
+    with open(f"save/{nama_folder}/candi.csv", mode="w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerows(candi)
 
-    else:
-        #jika tidak ada folder save, maka folder save akan dibuat
-        os.mkdir('./save')
-        print()
-        print('sedang membuat folder save...')
+    with open(f"save/{nama_folder}/bahan_bangunan.csv", mode="w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerows(bahan)
 
-        os.mkdir(f'save/{nama_folder}')
-        print()
-        print(f'sedang membuat folder save/{nama_folder}...')
-
-    print()
-    print(f'berhasil menyimpan data pada folder save/{nama_folder}')
-
-    with open(f'save/{nama_folder}/bahan_bangunan.csv','w',newline='') as f:
-        for i in range(util.length(bahan_bangunan)):
-            f.write(util.array_bahan[i])
-    with open(f'save/{nama_folder}/candi.csv','w',newline='') as f:
-        for i in range(util.length(candi[i]):
-            f.write(util.array_candi[i])
-    with open(f'save/{nama_folder}/user.csv','w',newline='') as f:
-        for i in range(util.length(user)):
-            f.write(util.user_matriks[i                  
+    print(f"Berhasil menyimpan data pada folder save/{nama_folder}"               
                   
 #f15 - Help
 f01 import * #dilakukan import f01 untuk cek role login
