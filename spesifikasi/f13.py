@@ -41,6 +41,3 @@ for i in range(len(list_directory)): #memeriksa nama folder yang diinput
             print('tidak ada masukan argumen dari user')
             print('usage: python main.py <nama_folder>')
             sys.exit()
-
-
-            
