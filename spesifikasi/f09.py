@@ -2,23 +2,25 @@
 
 import util
 
-def laporanjin():
+def laporanjin(array_user : list[list], array_candi : list[list], array_bahan : list[list]):
     # Prosedur ini menuliskan berbagai informasi dari para jin yang akan berguna bagi Bandung Bondowoso
     # I.S. arrayJin yaitu array of jin [0..500] yang terdefinisi sampai N effektif
     # F.S. Output informasi mengenai jin kepada layar
+
     # Kamus Lokal
     count=0 #int
     pengumpul = 0 #int
     pembangun = 0 #int
     idx_min = 100 #int
     idx_max = 101 #int
-    global JumlahJin #int
+    # JumlahJin : int
+
     # Algoritma
-    if (role=="bandung_bondowoso"):
+    if (util.user=="Bondowoso"):
         banyak_bangun=[int(0) for i in range (102)]
         # Menghitung banyaknya jin setiap jenis
         for i in range(3, 103):
-            if (array_user[i] != None):
+            if (array_user[i] != [None, None, None]):
                 if (array_user[i][2]=="Pengumpul"):
                     pengumpul += 1
                 else:
@@ -26,8 +28,8 @@ def laporanjin():
         # Mengisi array banyak_bangun
         for i in range (1, 101):
             for j in range (3, 103):
-                if (array_candi[i] != None):
-                    if (array_user[j] != None):
+                if (array_candi[i] != [None, None, None, None, None]):
+                    if (array_user[j] != [None, None, None]):
                         if (array_user[j][2]=="Pembangun"):
                             if (array_candi[i][1] == array_user[j][0]): 
                                 banyak_bangun[j-3] += 1
@@ -38,7 +40,7 @@ def laporanjin():
                         banyak_bangun[j-3] = None
                 else:
                     break
-        print("> Total Jin: " + str(JumlahJin))
+        print("> Total Jin: " + str(util.JumlahJin))
         print("> Total Jin Pengumpul: " + str(pengumpul))
         print("> Total Jin Pembangun: " + str(pembangun))
         banyak_bangun[100] = 500 # Elemen diluar range [0..99] sebagai penanda nilai minimum yang tidak mungkin dicapai
@@ -62,7 +64,7 @@ def laporanjin():
                 if (banyak_bangun[i]=='*'):
                     count=0
                     for j in range (1, 101):
-                        if (array_candi[j] != None):
+                        if (array_candi[j] != [None, None, None, None, None]):
                             if (array_candi[j][1] == array_user[i+3][0]): 
                                 count+=1
                     if (count > banyak_bangun[idx_max]):
