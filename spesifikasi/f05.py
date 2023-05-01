@@ -8,12 +8,12 @@ def ubahjin(user_matrix):
             count = count + 1
             temp = user_matrix[i][2]
     if count > 0:
-        yn = input(f'Jin ini bertipe {"Pengumpul" if temp == "jin_pengumpul" else "Pembangun"}. Yakin ingin mengubah ke tipe {"Pembangun" if temp == "jin_pengumpul" else "Pengumpul"} (Y/N)? ')
+        yn = input(f'Jin ini bertipe {"Pengumpul" if temp == "Pengumpul" else "Pembangun"}. Yakin ingin mengubah ke tipe {"Pembangun" if temp == "Pengumpul" else "Pengumpul"} (Y/N)? ')
         if yn == "Y":
-            if temp == "jin_pengumpul":
-                temp = "jin_pembangun"
+            if temp == "Pengumpul":
+                temp = "Pembangun"
             else:
-                temp = "jin_pengumpul"
+                temp = "Pengumpul"
             print("\nJin telah berhasil diubah")
             for i in range(util.length(user_matrix)):
                 if user_matrix[i][0] == username:
