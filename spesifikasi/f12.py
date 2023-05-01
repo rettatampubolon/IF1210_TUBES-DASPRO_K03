@@ -1,20 +1,18 @@
 #F12 - Ayam Berkokok
 
 import time
+import util
 
 def ayamberkokok():
     # Prosedur ini menentukan siapakah pemenang permainan ini. Jika candi mencapai 100, maka Bandung Bondowoso menang, sebaliknya jika kurang dari 100 permainan ini dimenangkan Roro Jonggrang
     # I.S. Program masih berjalan, pemenang belum ditentukan
     # F.S. Terdapat output pemumuman pemenang, program selesai
     # Kamus Lokal
-    n = 0 #int
+    util.counting_candi : int # dari util.py
     # Algoritma
-    if (role=="roro_jonggrang"):
+    if (util.user=="Roro"):
         print("Kukuruyuk.. Kukuruyuk..")
-        for i in range(1, 101):
-            if (array_candi[i] != None):
-                n += 1
-        if (n==100):
+        if (util.counting_candi<=0):
             time.sleep(1)
             print("")
             print("Jumlah Candi: 100")
@@ -25,7 +23,7 @@ def ayamberkokok():
         else:
             time.sleep(1)
             print("")
-            print("Jumlah Candi: " + str(n))
+            print("Jumlah Candi: " + str(100-util.counting_candi))
             time.sleep(1)
             print("")
             print("Selamat, Roro Jonggrang memenangkan permainan!")
