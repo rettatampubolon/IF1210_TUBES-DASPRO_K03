@@ -1,6 +1,13 @@
-import time
+# Variable global
+JumlahJin = 0
+user = "Bondowoso"
+acak = 1 #Seed
+counting_candi=100
 
-global JumlahJin
+# Array utama
+array_user = [[None, None, None] for i in range(105)] # Angka 105 dipilih untuk membantu implementasi f09
+array_candi = [[None, None, None, None, None] for i in range(101)]
+array_bahan = [[None, None, None], ["Pasir", "deskripsi", 0], ["Batu", "deskripsi", 0], ["Air", "deskripsi", 0],]
 
 #Fungsi Length
 def length(string):
@@ -11,11 +18,6 @@ def length(string):
     for i in string:
         count = count + 1
     return count
-
-def random_number():
-    times = int(time.time())
-    rand_num = ((times * 1103515245 + 12345) // 65536) % 6
-    return rand_num
 
 def eop(rek_file):
     return (rek_file[1] == '')
