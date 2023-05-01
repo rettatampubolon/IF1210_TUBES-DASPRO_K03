@@ -5,10 +5,9 @@ def summonjin():
 #I.S. 
 #F.S.
 
-    global JumlahJin
+    util.JumlahJin
     indeks = 0
-
-    if (JumlahJin) >= 100:
+    if (util.JumlahJin) >= 100:
         print("Jumlah jin telah mencapai maksimum.")
     else:
         print("Jenis jin yang dapat dipanggil: ")
@@ -17,7 +16,7 @@ def summonjin():
 
         jenis_jin = int(input("Masukkan nomor jenis jin yang ingin dipanggil:"))
 
-        while jenis_jin != 1 or jenis_jin !=2:
+        while jenis_jin != 1 and jenis_jin !=2:
             print(f"Tidak ada jenis jin bernomor {jenis_jin}")
             jenis_jin = int(input("Masukkan nomor jenis jin yang ingin dipanggil:"))
 
@@ -26,29 +25,29 @@ def summonjin():
         else:
             print('Memilih jin Pembangun')
         
-        #Input username dan password setelah tipe data valid
+        #Input username setelah tipe data valid
         username = input("Masukkan username jin: ")
-        password = input("Masukkan password jin: ")
-        isUsername = False
 
         #Kondisi tidak valid
-        cari_user = util.search_matriks(user, username)
-
-        if cari_user == -1:
+        cari_user = search_name(util.array_user, username)
+        while cari_user != -1:
             print(f"Username {username} sudah diambil")
-            username = input(username)
+            username = input("Masukkan username jin: ")
+            cari_user = search_name(util.array_user, username)
 
+        #Input password setelah tipe data valid
+        password = input("Masukkan password jin: ")
+        
         #Kondisi ketika password panjangnya tidak memenuhi syarat
-        while util.length(password) < 5 and util.length(password) > 25:
+        while util.length(password) < 5 or util.length(password) > 25:
             print("Password panjangnya harus 5-25 karakter!")
             password = input("Masukkan password jin: ")
+
         #Kondisi ketika password sudah valid
-        while (indeks < 100) and not(user[0]):
+        indeks = 3
+        while (util.array_user[indeks][0] != None):
             indeks += 1
-            if (user[0]):
-                isUsername = True
-        
-        user = [username, password, "Pengumpul" if jenis_jin == 1 else "Pembangun"]
+        util.array_user[indeks] = [username, password, "Pengumpul" if jenis_jin == 1 else "Pembangun"]
 
         print("Mengumpulkan sesajen...")
         time.sleep(1)
@@ -59,5 +58,10 @@ def summonjin():
         print()
         time.sleep(1)
         print(f"Jin, {username} berhasil dipanggil")
-
-        return user
+        util.JumlahJin += 1
+    
+def search_name(list, input):
+    for i in range(util.length(list)):
+        if list[i][0] == input:
+            return i
+    return -1
