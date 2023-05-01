@@ -25,4 +25,3 @@ def save(user, candi, bahan):
         writer.writerows(bahan)
 
     print(f"Berhasil menyimpan data pada folder save/{nama_folder}")
-
