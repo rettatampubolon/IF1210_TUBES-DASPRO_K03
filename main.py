@@ -2,7 +2,7 @@
 
 import csv
 import util
-import fileEksternal
+import file-eksternal
 
 
 from spesifikasi import f01 # DONE
