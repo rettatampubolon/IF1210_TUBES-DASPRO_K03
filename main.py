@@ -24,21 +24,21 @@ from spesifikasi import f16 # DONE
 
 
 #Loading Data utama
-file = open('fileEksternal/user.csv', 'r')
+file = open('file-eksternal/user.csv', 'r')
 file_reader = csv.reader(file, delimiter=';')
 row = list(file_reader)
 for i in range(len(row)):
 	util.array_user[i] = row[i]
 file.close()
 
-file = open('fileEksternal/bahan_bangunan.csv', 'r')
+file = open('file-eksternal/bahan_bangunan.csv', 'r')
 file_reader = csv.reader(file, delimiter=';')
 row = list(file_reader)
 for i in range(len(row)):
 	util.array_bahan[i] = row[i]
 file.close()
 
-file = open('fileEksternal/candi.csv', 'r')
+file = open('file-eksternal/candi.csv', 'r')
 file_reader = csv.reader(file, delimiter=';')
 row = list(file_reader)
 for i in range(len(row)):
