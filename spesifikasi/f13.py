@@ -3,23 +3,23 @@ import argparse
 import sys
 
 parser = argparse.ArgumentParser()
-folder_directory = args.nama_folder
 parser.add_argument('nama_folder', nargs='?')
 args = parser.parse_args()
+folder_directory = args.nama_folder
 
 list_directory = os.listdir('.')
 print()
-
-if save:
-    list_save = os.listdir('./save')
-    idx = 0
 
 save = False
 for i in range(len(list_directory)): #memeriksa folder save di current path
     if 'save' == list_directory[i]:
         save = True
         break
-    
+
+if save:
+    list_save = os.listdir('./save')
+    idx = 0
+
 for i in range(len(list_directory)): #memeriksa nama folder yang diinput
     if folder_directory == list_directory[i]:
         print('Loading...')
