@@ -39,7 +39,7 @@ def summonjin():
             username = input(username)
 
         #Kondisi ketika password panjangnya tidak memenuhi syarat
-        while length(password) < 5 and length(password) > 25:
+        while util.length(password) < 5 and util.length(password) > 25:
             print("Password panjangnya harus 5-25 karakter!")
             password = input("Masukkan password jin: ")
         #Kondisi ketika password sudah valid
