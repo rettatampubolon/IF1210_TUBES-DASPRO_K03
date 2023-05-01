@@ -1,13 +1,11 @@
-# Variable global
-JumlahJin = 0
-user = "Bondowoso"
-acak = 1 #Seed
-counting_candi=100
-
-# Array utama
+#Inisialisasi
 array_user = [[None, None, None] for i in range(105)] # Angka 105 dipilih untuk membantu implementasi f09
 array_candi = [[None, None, None, None, None] for i in range(101)]
 array_bahan = [[None, None, None], ["Pasir", "deskripsi", 0], ["Batu", "deskripsi", 0], ["Air", "deskripsi", 0],]
+JumlahJin = 0
+user = ""
+acak = 1 #Seed
+counting_candi=100
 
 #Fungsi Length
 def length(string):
