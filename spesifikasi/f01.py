@@ -1,18 +1,16 @@
-def login():
-    username = input("Username: ")
-    password = input("Password: ")
+import util
 
-    with open("user.csv", "r") as func:
-        reader = csv.reader(func, delimiter=";")
-        for row in reader:
+def login():
+    if util.user == "":
+        username = input("Username: ")
+        password = input("Password: ")
+        for row in util.array_user:
             if row[0] == username and row[1] == password:
                 print(f"Selamat datang, {row[2]}! \nMasukkan command “help” untuk daftar command yang dapat kamu panggil.")
-                return True
+                util.user = username
             elif username != row [0] and row[1] == password:
                 print("Username tidak terdaftar!")
-                return False
             elif username == row [0] and row[1] != password:
                 print ("Password salah!")
-                return False
-    print(f"Login gagal! \n Anda telah login dengan {username}, silahkan lakukan “logout” sebelum melakukan login kembali.")
-    return False
+    else:
+        print(f"Login gagal! \n Anda telah login dengan {util.user}, silahkan lakukan “logout” sebelum melakukan login kembali.")
