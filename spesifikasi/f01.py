@@ -13,8 +13,8 @@ def login():
                 break
             elif username == row [0] and row[1] != password:
                 print ("Password salah!")
-                break
                 found = True
+                break
         if (not found):
             print("Username tidak terdaftar!")
     else:
