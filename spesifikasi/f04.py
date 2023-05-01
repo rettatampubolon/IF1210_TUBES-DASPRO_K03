@@ -1,6 +1,6 @@
 import util
 
-def hilangkan_jin(user_matrix):
+def hilangkan_jin(user_matrix, candi_matrix):
     username = input("Masukkan username jin : ")
     indeks = -1
     for i in range (util.length(user_matrix)):
@@ -11,6 +11,10 @@ def hilangkan_jin(user_matrix):
             if yn == 'Y' or yn == 'y':
                 indeks = i
                 print("Jin telah berhasil dihapus dari alam gaib.")
+                user_matrix[indeks] = [None, None, None]
+                for i in range(util.length(candi_matrix)):
+                    if candi_matrix[i][1] == username:
+                        candi_matrix[i] = [None, None, None, None, None]
                 break
             else:
                 break
