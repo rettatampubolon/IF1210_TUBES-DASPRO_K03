@@ -1,4 +1,4 @@
-import f01
+f01 import * #untuk memanggil f01-login
 
 def help(info_user):
     print('=========== HELP ===========')
