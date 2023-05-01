@@ -11,10 +11,12 @@ def hilangkan_jin(user_matrix, candi_matrix):
             if yn == 'Y' or yn == 'y':
                 indeks = i
                 print("Jin telah berhasil dihapus dari alam gaib.")
+                util.JumlahJin -= 1
                 user_matrix[indeks] = [None, None, None]
                 for i in range(util.length(candi_matrix)):
                     if candi_matrix[i][1] == username:
                         candi_matrix[i] = [None, None, None, None, None]
+                        util.counting_candi += 1
                 break
             else:
                 break
