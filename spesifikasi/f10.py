@@ -1,5 +1,8 @@
 #F10 - Ambil Laporan Candi
-def laporancandi():
+
+import util
+
+def laporancandi(array_candi):
     # Prosedur ini menuliskan berbagai informasi progress pembuatan candi bagi Bandung Bondowoso
     # I.S. arrayCandi yaitu array of candi [0..99] yang terdefinisi sampai N effektif
     # F.S. Output informasi mengenai candi kepada layar
@@ -14,9 +17,9 @@ def laporancandi():
     mahal = 0 #int
     murah = 0 #int
     # Algoritma
-    if (role=="bandung_bondowoso"):
+    if (util.user=="Bondowoso"):
         for i in range(1, 101):
-            if (array_candi[i] != None):
+            if (array_candi[i] != [None, None, None, None, None]):
                 pasir_total += array_candi[i][2]
                 batu_total += array_candi[i][3]
                 air_total += array_candi[i][4]
@@ -30,9 +33,9 @@ def laporancandi():
             print("> ID Candi Termurah: -")
         else:
             mahal = 0 #int
-            murah = (pasir_total+batu_total+air_total)*15000 #int
+            murah = (pasir_total+batu_total+air_total)*15000 #in
             for i in range(1, 101):
-                if (array_candi[i] != None):
+                if (array_candi[i] != [None, None, None, None, None]):
                     biaya = array_candi[i][2]*10000 + array_candi[i][3]*15000 + array_candi[i][4]*7500
                     if (biaya>mahal):
                         mahal = biaya
