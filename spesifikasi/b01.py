@@ -1,12 +1,15 @@
 #B01 - Random Number Generator
+
+import util
+
 def randomize(jenis:str)->int: 
     # Fungsi ini memilih sebuah bilangan secara acak yang akan digunakan pada F06, F07, F08.
     # Parameter fungsi diisi "bangun" [1..5] untuk jin pembangun atau "kumpul" [0..5] untuk jin pengumpul.
     # Kamus Lokal
-    global acak #int
+        # acak : int (dari util.py)
     # Algoritma
-    acak = (17*acak+1)%1024
+    util.acak = (17*util.acak+1)%1024
     if (jenis=="bangun"):
-        return (acak%5)+1
+        return (util.acak%5)+1
     else:
-        return acak%6
+        return util.acak%6
